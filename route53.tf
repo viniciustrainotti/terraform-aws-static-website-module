@@ -26,7 +26,7 @@ resource "aws_route53_record" "www" {
   zone_id = data.aws_route53_zone.this[0].zone_id
 
   alias {
-    evaluate_target_health = false
+    evaluate_target_health = true
     name                   = "${aws_s3_bucket.www_redirect.website_domain}"
     zone_id                = "${aws_s3_bucket.www_redirect.hosted_zone_id}"
   }
