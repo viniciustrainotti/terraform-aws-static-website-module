@@ -72,3 +72,8 @@ variable "default_file_type" {
   default     = "application/octet-stream"
   description = "The Content-Type value to use for any files that don't match one of the suffixes given in file_types."
 }
+
+variable "website_path" {
+  type        = string
+  description = "Website path to project to uploads files"
+}
