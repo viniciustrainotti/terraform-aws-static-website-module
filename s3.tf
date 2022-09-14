@@ -32,16 +32,22 @@ resource "aws_s3_bucket" "website" {
 }
 
 resource "aws_s3_bucket" "www_redirect" {
+  count = local.has_domain ? 1 : 0
+
   bucket = "www.${local.domain}"
 }
 
 resource "aws_s3_bucket_acl" "www_redirect" {
-  bucket = aws_s3_bucket.www_redirect.id
+  count = local.has_domain ? 1 : 0
+
+  bucket = aws_s3_bucket.www_redirect[0].id
   acl    = "private"
 }
 
 resource "aws_s3_bucket_website_configuration" "www_redirect" {
-  bucket = aws_s3_bucket.www_redirect.id
+  count = local.has_domain ? 1 : 0
+
+  bucket = aws_s3_bucket.www_redirect[0].id
 
   redirect_all_requests_to {
     host_name = local.domain

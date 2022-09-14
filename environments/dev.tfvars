@@ -3,7 +3,7 @@ aws_profile = "viniciustrainotti"
 
 # Application
 app_name     = "application-react"
-domain       = "viniciustrainotti.com"
+domain       = ""
 website_path = "/opt/projects/react/learn-githubactions-react"
 
 # Environemnt

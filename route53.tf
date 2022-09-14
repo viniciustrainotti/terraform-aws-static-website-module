@@ -27,8 +27,8 @@ resource "aws_route53_record" "www" {
 
   alias {
     evaluate_target_health = true
-    name                   = aws_s3_bucket.www_redirect.website_domain
-    zone_id                = aws_s3_bucket.www_redirect.hosted_zone_id
+    name                   = aws_s3_bucket.www_redirect[0].website_domain
+    zone_id                = aws_s3_bucket.www_redirect[0].hosted_zone_id
   }
 }
 
