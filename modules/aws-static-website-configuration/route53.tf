@@ -1,13 +1,13 @@
 data "aws_route53_zone" "this" {
-  count = local.has_domain ? 1 : 0
+  count = var.domain != "" ? 1 : 0
 
-  name = "${local.domain}."
+  name = "${var.domain}."
 }
 
 resource "aws_route53_record" "website" {
-  count = local.has_domain ? 1 : 0
+  count = var.domain != "" ? 1 : 0
 
-  name    = local.domain
+  name    = var.domain
   type    = "A"
   zone_id = data.aws_route53_zone.this[0].zone_id
 
@@ -23,9 +23,9 @@ resource "aws_route53_record" "website" {
 }
 
 resource "aws_route53_record" "www" {
-  count = local.has_domain ? 1 : 0
+  count = var.domain != "" ? 1 : 0
 
-  name    = "www.${local.domain}"
+  name    = "www.${var.domain}"
   type    = "CNAME"
   zone_id = data.aws_route53_zone.this[0].zone_id
   ttl     = 300
@@ -36,7 +36,7 @@ resource "aws_route53_record" "www" {
 resource "aws_route53_record" "cert_validation" {
   provider = aws.us-east-1
 
-  for_each = local.has_domain ? {
+  for_each = var.domain != "" ? {
     for dvo in aws_acm_certificate.this[0].domain_validation_options : dvo.domain_name => {
       name   = dvo.resource_record_name
       record = dvo.resource_record_value
