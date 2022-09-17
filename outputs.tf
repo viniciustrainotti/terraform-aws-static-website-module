@@ -1,11 +1,15 @@
 output "website-url" {
-  value = local.has_domain ? var.domain : aws_s3_bucket_website_configuration.bucket_website_configuration.website_endpoint
+  value = module.website_s3_bucket.website-url
 }
 
 output "cdn-url" {
-  value = aws_cloudfront_distribution.this.domain_name
+  value = module.website_s3_bucket.cdn-url
 }
 
 output "distribution-id" {
-  value = aws_cloudfront_distribution.this.id
+  value = module.website_s3_bucket.distribution-id
+}
+
+output "bucket_website" {
+  value = module.website_s3_bucket.bucket_website
 }
