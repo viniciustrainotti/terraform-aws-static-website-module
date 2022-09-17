@@ -7,7 +7,7 @@ resource "aws_cloudfront_distribution" "this" {
   is_ipv6_enabled     = true
   comment             = "Managed by Terraform"
   default_root_object = "index.html"
-  aliases             = local.has_domain ? [local.domain] : []
+  aliases             = local.has_domain ? [local.domain, "www.${local.domain}"] : []
 
   logging_config {
     bucket          = aws_s3_bucket.logs.bucket_domain_name

@@ -16,20 +16,21 @@ resource "aws_route53_record" "website" {
     name                   = aws_cloudfront_distribution.this.domain_name
     zone_id                = aws_cloudfront_distribution.this.hosted_zone_id
   }
+
+  depends_on = [
+    aws_cloudfront_distribution.this
+  ]
 }
 
 resource "aws_route53_record" "www" {
   count = local.has_domain ? 1 : 0
 
   name    = "www.${local.domain}"
-  type    = "A"
+  type    = "CNAME"
   zone_id = data.aws_route53_zone.this[0].zone_id
+  ttl     = 300
 
-  alias {
-    evaluate_target_health = true
-    name                   = aws_s3_bucket.www_redirect[0].website_domain
-    zone_id                = aws_s3_bucket.www_redirect[0].hosted_zone_id
-  }
+  records = ["${aws_cloudfront_distribution.this.domain_name}"]
 }
 
 resource "aws_route53_record" "cert_validation" {
