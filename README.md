@@ -29,7 +29,7 @@ profile in aws-cli with proper permissions to run this Terraform configuration.
 You should change the values in the `dev.tfvars` file, in the `environments`
 folder.
 
-After change values, execute following steps
+After changing the values, execute the following steps:
 
 ```sh
 $ terraform init
