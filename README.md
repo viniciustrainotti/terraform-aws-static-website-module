@@ -1,6 +1,11 @@
 # Terraform Static Website Infrastructure
 
-This repository presents the use of a module with an infrastructure for hosting a React application with AWS S3 and AWS CloudFront with the possibility of creating domain aliases with AWS Route53 and generating a certificate with Amazon Certificate Manager.
+This repository contains Terraform configuration that can be used to provision
+cloud infrastructure resources on AWS to host a React application.
+
+The AWS services used are CloudFront and S3. If a domain name is provided,
+aliases are created using Route53, and a cerificate is requested from Amazon
+Certificate Manager.
 
 ## Requirements
 
