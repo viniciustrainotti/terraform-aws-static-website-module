@@ -4,16 +4,17 @@ This repository presents the use of a module with an infrastructure for hosting 
 
 ## Requirements
 
-| Name | Version |
-|---|---|
-| terraform  | 1.2.3 |
-| aws-cli    | 2.4.2 |
+| Name      | Version |
+|:----------|:-------:|
+| terraform | 1.2.3   |
+| aws-cli   | 2.4.2   |
 
 ## Providers
 
-| Name | Version |
-|---|---|
+| Name | Version   |
+|:-----|:---------:|
 | aws  | >= 4.19.0 |
+
 
 ## Usage
 
