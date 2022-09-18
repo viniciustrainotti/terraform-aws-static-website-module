@@ -23,7 +23,11 @@ Certificate Manager.
 
 ## Usage
 
-Assuming you have already configured a profile in aws-cli with proper permissions to run terraform. You should change values `dev.tfvars` file in environments folder.
+**DISCLAIMER:** The following commands assume you have already configured a
+profile in aws-cli with proper permissions to run this Terraform configuration.
+
+You should change the values in the `dev.tfvars` file, in the `environments`
+folder.
 
 After change values, execute following steps
 
