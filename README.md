@@ -38,7 +38,7 @@ $ terraform plan -var-file="environments/dev.tfvars" -out="tfplan.out"
 $ terraform apply "tfplan.out"
 ```
 
-To tear down infrastructure to use below command.
+To tear down the provisioned infrastructure, use the following commands:
 
 ```sh
 $ terraform workspace select dev
