@@ -1,13 +1,13 @@
 resource "aws_cloudfront_origin_access_identity" "this" {
-  comment = var.app_name_default
+  comment = var.application_name
 }
 
 resource "aws_cloudfront_distribution" "this" {
   enabled             = true
   is_ipv6_enabled     = true
   comment             = "Managed by Terraform"
-  default_root_object = "index.html"
-  aliases             = var.domain != "" ? [var.domain, "www.${var.domain}"] : []
+  default_root_object = var.default_root_index_file
+  aliases             = local.has_domain ? local.cloudfront_aliases : []
 
   logging_config {
     bucket          = aws_s3_bucket.logs.bucket_domain_name
@@ -49,19 +49,19 @@ resource "aws_cloudfront_distribution" "this" {
   }
 
   dynamic "viewer_certificate" {
-    for_each = var.domain != "" ? [] : [0]
+    for_each = local.has_domain ? [] : [0]
     content {
       cloudfront_default_certificate = true
     }
   }
 
   dynamic "viewer_certificate" {
-    for_each = var.domain != "" ? [0] : []
+    for_each = local.has_domain ? [0] : []
     content {
       acm_certificate_arn = aws_acm_certificate.this[0].arn
       ssl_support_method  = "sni-only"
     }
   }
 
-  tags = var.tags
+  tags = var.common_tags
 }

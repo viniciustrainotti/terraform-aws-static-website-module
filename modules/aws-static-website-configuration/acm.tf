@@ -1,5 +1,5 @@
 resource "aws_acm_certificate" "this" {
-  count = var.domain != "" ? 1 : 0
+  count = local.has_domain ? 1 : 0
 
   provider = aws.us-east-1
 
@@ -9,7 +9,7 @@ resource "aws_acm_certificate" "this" {
 }
 
 resource "aws_acm_certificate_validation" "this" {
-  count = var.domain != "" ? 1 : 0
+  count = local.has_domain ? 1 : 0
 
   provider = aws.us-east-1
 

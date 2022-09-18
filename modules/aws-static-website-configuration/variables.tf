@@ -63,7 +63,18 @@ variable "tags" {
   type        = map(string)
 }
 
-variable "app_name_default" {
+variable "application_name" {
   description = "Define application name to set default resources"
   type        = string
+}
+
+variable "aliases_cf_www" {
+  type        = bool
+  description = "Conditional to add www subdomain redirect or only root domain"
+}
+
+variable "default_root_index_file" {
+  type = string
+  description = "Default root index file to resources"
+  default = "index.html"
 }

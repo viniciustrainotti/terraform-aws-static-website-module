@@ -23,7 +23,7 @@ resource "aws_route53_record" "website" {
 }
 
 resource "aws_route53_record" "www" {
-  count = var.domain != "" ? 1 : 0
+  count = local.create_record_subdomain ? 1 : 0
 
   name    = "www.${var.domain}"
   type    = "CNAME"

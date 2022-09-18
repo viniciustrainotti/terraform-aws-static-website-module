@@ -32,3 +32,15 @@ variable "website_path" {
   type        = string
   description = "Website path to project to uploads files"
 }
+
+variable "has_aliases_cf_www" {
+  type = bool
+  description = "To create www subdomain or only root domain"
+  default = false
+}
+
+variable "default_root_index_file" {
+  type = string
+  description = "Default root index file to resources"
+  default = "index.html"
+}
