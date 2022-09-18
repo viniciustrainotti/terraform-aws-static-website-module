@@ -3,10 +3,10 @@ variable "aws_profile" {
   description = ""
 }
 
-variable "domain" {
-  type        = string
-  description = ""
-  default     = ""
+variable "domains" {
+  type        = list(string)
+  description = "List of domains that will be used for the website."
+  default     = []
 }
 
 # https://github.com/hashicorp/terraform-template-dir/blob/master/variables.tf

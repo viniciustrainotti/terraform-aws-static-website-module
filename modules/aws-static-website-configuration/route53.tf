@@ -1,15 +1,14 @@
-data "aws_route53_zone" "this" {
-  count = var.domain != "" ? 1 : 0
-
-  name = "${var.domain}."
+data "aws_route53_zone" "dns_zone" {
+  for_each = toset(var.domains)
+  name     = each.key
 }
 
 resource "aws_route53_record" "website" {
-  count = var.domain != "" ? 1 : 0
+  for_each = toset(var.domains)
 
-  name    = var.domain
+  name    = each.key
   type    = "A"
-  zone_id = data.aws_route53_zone.this[0].zone_id
+  zone_id = data.aws_route53_zone.dns_zone[each.key].zone_id
 
   alias {
     evaluate_target_health = false
@@ -23,11 +22,11 @@ resource "aws_route53_record" "website" {
 }
 
 resource "aws_route53_record" "www" {
-  count = var.domain != "" ? 1 : 0
+  for_each = toset(var.domains)
 
-  name    = "www.${var.domain}"
+  name    = "www.${each.key}"
   type    = "CNAME"
-  zone_id = data.aws_route53_zone.this[0].zone_id
+  zone_id = data.aws_route53_zone.dns_zone[each.key].zone_id
   ttl     = 300
 
   records = ["${aws_cloudfront_distribution.this.domain_name}"]
@@ -36,18 +35,19 @@ resource "aws_route53_record" "www" {
 resource "aws_route53_record" "cert_validation" {
   provider = aws.us-east-1
 
-  for_each = var.domain != "" ? {
-    for dvo in aws_acm_certificate.this[0].domain_validation_options : dvo.domain_name => {
-      name   = dvo.resource_record_name
-      record = dvo.resource_record_value
-      type   = dvo.resource_record_type
+  for_each = flatten([for d in var.domains : [
+    for dvo in aws_acm_certificate.this[0].domain_validation_options : {
+      zone_id = data.aws_route53_zone.dns_zone[d].zone_id
+      name    = dvo.resource_record_name
+      type    = dvo.resource_record_type
+      value   = dvo.resource_record_value
     }
-  } : {}
+  ]])
 
   allow_overwrite = true
   name            = each.value.name
   records         = [each.value.record]
   ttl             = 60
   type            = each.value.type
-  zone_id         = data.aws_route53_zone.this[0].zone_id
+  zone_id         = each.value.zone_id
 }

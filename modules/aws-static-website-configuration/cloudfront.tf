@@ -7,7 +7,8 @@ resource "aws_cloudfront_distribution" "this" {
   is_ipv6_enabled     = true
   comment             = "Managed by Terraform"
   default_root_object = "index.html"
-  aliases             = var.domain != "" ? [var.domain, "www.${var.domain}"] : []
+
+  aliases = flatten([for d in var.domains : [d, "www.${d}"]])
 
   logging_config {
     bucket          = aws_s3_bucket.logs.bucket_domain_name
@@ -49,16 +50,16 @@ resource "aws_cloudfront_distribution" "this" {
   }
 
   dynamic "viewer_certificate" {
-    for_each = var.domain != "" ? [] : [0]
+    for_each = aws_acm_certificate.this
     content {
       cloudfront_default_certificate = true
     }
   }
 
   dynamic "viewer_certificate" {
-    for_each = var.domain != "" ? [0] : []
+    for_each = aws_acm_certificate.this
     content {
-      acm_certificate_arn = aws_acm_certificate.this[0].arn
+      acm_certificate_arn = each.value.arn
       ssl_support_method  = "sni-only"
     }
   }

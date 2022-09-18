@@ -18,7 +18,7 @@ data "aws_iam_policy_document" "s3_allow_access_from_cf" {
 
 resource "aws_s3_bucket" "logs" {
   bucket        = "${var.app_name_default}-logs"
-  force_destroy = !(var.domain != "")
+  force_destroy = var.domains == []
 
   tags = var.common_tags
 
@@ -31,7 +31,7 @@ resource "aws_s3_bucket_acl" "acl_logs" {
 
 resource "aws_s3_bucket" "website" {
   bucket        = var.app_name_default
-  force_destroy = !(var.domain != "")
+  force_destroy = var.domains == []
 
   tags = var.common_tags
 }

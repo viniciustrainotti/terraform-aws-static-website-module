@@ -1,5 +1,5 @@
-output "website-url" {
-  value = module.website_s3_bucket.website-url
+output "website-urls" {
+  value = module.website_s3_bucket.website-urls
 }
 
 output "cdn-url" {

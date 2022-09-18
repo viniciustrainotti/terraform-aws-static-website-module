@@ -1,5 +1,5 @@
-output "website-url" {
-  value = var.domain != "" ? var.domain : aws_cloudfront_distribution.this.domain_name
+output "website-urls" {
+  value = length(var.domains) > 0 ? var.domains : aws_cloudfront_distribution.this.domain_name
 }
 
 output "bucket_logs" {

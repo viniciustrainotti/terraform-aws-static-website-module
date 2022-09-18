@@ -10,10 +10,10 @@ variable "aws_profile" {
   default     = "viniciustrainotti"
 }
 
-variable "domain" {
-  type        = string
-  description = ""
-  default     = ""
+variable "domains" {
+  type        = list(string)
+  description = "List of domains that will be used for the website."
+  default     = []
 }
 
 variable "environment" {
