@@ -1,19 +1,18 @@
 variable "aws_profile" {
+  description = "Profile set of your AWS account"
   type        = string
-  description = ""
+  default     = "default"
 }
 
 variable "domain" {
+  description = "Set root domain"
   type        = string
-  description = ""
   default     = ""
 }
 
-# https://github.com/hashicorp/terraform-template-dir/blob/master/variables.tf
 variable "file_types" {
   description = "Map from file suffixes, which must begin with a period and contain no periods, to the corresponding Content-Type values."
-
-  type = map(string)
+  type        = map(string)
   default = {
     ".txt"    = "text/plain; charset=utf-8"
     ".html"   = "text/html; charset=utf-8"
@@ -49,20 +48,22 @@ variable "file_types" {
 }
 
 variable "default_file_type" {
+  description = "The Content-Type value to use for any files that don't match one of the suffixes given in file_types."
   type        = string
   default     = "application/octet-stream"
-  description = "The Content-Type value to use for any files that don't match one of the suffixes given in file_types."
 }
 
 variable "website_path" {
-  type        = string
   description = "Website path to project to uploads files"
+  type        = string
 }
 
 variable "tags" {
-  type = map(string)
+  description = "Define tags to set in resources"
+  type        = map(string)
 }
 
 variable "app_name_default" {
-  type = string
+  description = "Define application name to set default resources"
+  type        = string
 }
