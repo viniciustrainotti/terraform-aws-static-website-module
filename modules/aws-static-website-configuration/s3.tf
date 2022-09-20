@@ -20,7 +20,7 @@ resource "aws_s3_bucket" "logs" {
   bucket        = "${var.app_name_default}-logs"
   force_destroy = !(var.domain != "")
 
-  tags = var.common_tags
+  tags = var.tags
 
 }
 
@@ -33,7 +33,7 @@ resource "aws_s3_bucket" "website" {
   bucket        = var.app_name_default
   force_destroy = !(var.domain != "")
 
-  tags = var.common_tags
+  tags = var.tags
 }
 
 resource "aws_s3_bucket_public_access_block" "block_public_access" {

@@ -6,5 +6,5 @@ module "website_s3_bucket" {
   app_name_default = local.app_name_default
   website_path     = var.website_path
 
-  common_tags = local.common_tags
+  tags = local.common_tags
 }
