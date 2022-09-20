@@ -59,7 +59,7 @@ variable "website_path" {
   description = "Website path to project to uploads files"
 }
 
-variable "common_tags" {
+variable "tags" {
   type = map(string)
 }
 
