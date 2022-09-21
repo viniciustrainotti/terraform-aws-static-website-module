@@ -33,6 +33,7 @@ After changing the values, execute the following steps:
 
 ```sh
 $ terraform init
+$ terraform workspace new dev
 $ terraform plan -var-file="environments/dev.tfvars" -out="tfplan.out"
 $ terraform apply "tfplan.out"
 ```
@@ -40,5 +41,6 @@ $ terraform apply "tfplan.out"
 To tear down the provisioned infrastructure, use the following commands:
 
 ```sh
+$ terraform workspace select dev
 $ terraform destroy -var-file"environments/dev.tfvars"
 ```

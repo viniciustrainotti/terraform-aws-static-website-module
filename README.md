@@ -7,7 +7,7 @@ and AWS domain configuration with AWS ACM & AWS Route53 optionally.
 
 ```terraform
 module "website" {
-  source = "github.com/viniciustrainotti/terraform-s3-cloudfront"
+  source = "github.com/viniciustrainotti/terraform-aws-static-website-module"
 
   aws_profile             = "default"
   domain                  = "example.com"
@@ -19,6 +19,11 @@ module "website" {
   tags = { Application = "example", Environment = "dev" }
 }
 ```
+
+## Examples
+
+- [Basic Example](https://github.com/viniciustrainotti/terraform-aws-static-website-module/tree/master/examples/basic)
+- [Complete Example](https://github.com/viniciustrainotti/terraform-aws-static-website-module/tree/master/examples/complete)
 
 ## Requirements
 
@@ -85,8 +90,8 @@ No modules.
 
 ## Authors
 
-Module is maintained by [Vinícius Trainotti](https://github.com/viniciustrainotti) with help [from these awesome contributors](https://github.com/viniciustrainotti/terraform-s3-cloudfront/graphs/contributors).
+Module is maintained by [Vinícius Trainotti](https://github.com/viniciustrainotti) with help [from these awesome contributors](https://github.com/viniciustrainotti/terraform-aws-static-website-module/graphs/contributors).
 
 ## License
 
-Apache 2 Licensed. See [LICENSE](https://github.com/viniciustrainotti/terraform-s3-cloudfront/blob/master/modules/aws-static-website-configuration/LICENSE) for full details.
+Apache 2 Licensed. See [LICENSE](https://github.com/viniciustrainotti/terraform-aws-static-website-module/blob/master/modules/aws-static-website-configuration/LICENSE) for full details.
