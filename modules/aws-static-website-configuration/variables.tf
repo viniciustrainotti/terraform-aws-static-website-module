@@ -53,19 +53,10 @@ variable "default_file_type" {
   default     = "application/octet-stream"
 }
 
-variable "website_path" {
-  description = "Website path to project to uploads files"
-  type        = string
-}
-
 variable "tags" {
   description = "Define tags to set in resources"
   type        = map(string)
-}
-
-variable "application_name" {
-  description = "Define application name to set default resources"
-  type        = string
+  default     = {}
 }
 
 variable "default_root_index_file" {
@@ -78,4 +69,14 @@ variable "subdomains" {
   description = "List contains subdomains"
   type        = list(string)
   default     = []
+}
+
+variable "application_name" {
+  description = "Define application name to set default resources"
+  type        = string
+}
+
+variable "website_path" {
+  description = "Website path to project to uploads files"
+  type        = string
 }
