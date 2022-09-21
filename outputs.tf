@@ -1,15 +1,19 @@
 output "website-url" {
-  value = module.website.website-url
+  value = var.domain != "" ? "https://${var.domain}" : "https://${aws_cloudfront_distribution.this.domain_name}"
 }
 
-output "cdn-url" {
-  value = module.website.cdn-url
-}
-
-output "distribution-id" {
-  value = module.website.distribution-id
+output "bucket_logs" {
+  value = aws_s3_bucket.logs.id
 }
 
 output "bucket_website" {
-  value = module.website.bucket_website
+  value = aws_s3_bucket.website.id
+}
+
+output "cdn-url" {
+  value = aws_cloudfront_distribution.this.domain_name
+}
+
+output "distribution-id" {
+  value = aws_cloudfront_distribution.this.id
 }
