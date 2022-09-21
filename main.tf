@@ -1,17 +1,7 @@
-terraform {
-  required_version = "1.2.3"
-
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = ">= 4.19.0"
-    }
-  }
-}
-
-provider "aws" {
-  region  = var.aws_region
-  profile = var.aws_profile
+locals {
+  has_domain         = var.domain != ""
+  subdomains         = [for s in var.subdomains : "${s}.${var.domain}"]
+  cloudfront_aliases = concat([var.domain], local.subdomains)
 }
 
 provider "aws" {

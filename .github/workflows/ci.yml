@@ -1,0 +1,31 @@
+---
+name: CI
+
+'on':
+  push:
+    branches:
+      - 'master'
+  pull_request:
+    branches:
+      - 'master'
+    types:
+      - opened
+      - edited
+      - synchronize
+      - reopened
+
+jobs:
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.2.3
+
+      - name: Init
+        run: terraform init
+
+      - name: Validate
+        run: terraform validate
