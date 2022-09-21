@@ -68,13 +68,14 @@ variable "application_name" {
   type        = string
 }
 
-variable "aliases_cf_www" {
-  type        = bool
-  description = "Conditional to add www subdomain redirect or only root domain"
+variable "default_root_index_file" {
+  description = "Default root index file to resources"
+  type        = string
+  default     = "index.html"
 }
 
-variable "default_root_index_file" {
-  type = string
-  description = "Default root index file to resources"
-  default = "index.html"
+variable "subdomains" {
+  description = "List contains subdomains"
+  type        = list(string)
+  default     = []
 }

@@ -5,7 +5,7 @@ resource "aws_acm_certificate" "this" {
 
   domain_name               = var.domain
   validation_method         = "DNS"
-  subject_alternative_names = ["*.${var.domain}"]
+  subject_alternative_names = local.subdomains
 }
 
 resource "aws_acm_certificate_validation" "this" {

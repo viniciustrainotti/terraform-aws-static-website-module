@@ -1,46 +1,46 @@
 variable "aws_region" {
+  description = "AWS Region"
   type        = string
-  description = ""
   default     = "us-east-1"
 }
 
 variable "aws_profile" {
+  description = "AWS Profile"
   type        = string
-  description = ""
-  default     = "viniciustrainotti"
+  default     = "default"
 }
 
 variable "domain" {
+  description = "Define domain to root domain"
   type        = string
-  description = ""
   default     = ""
 }
 
 variable "environment" {
-  type        = string
   description = "Deployment environment"
+  type        = string
   default     = "dev"
 }
 
 variable "app_name" {
-  type        = string
   description = "App name"
+  type        = string
   default     = "Application React"
 }
 
 variable "website_path" {
-  type        = string
   description = "Website path to project to uploads files"
-}
-
-variable "has_aliases_cf_www" {
-  type = bool
-  description = "To create www subdomain or only root domain"
-  default = false
+  type        = string
 }
 
 variable "default_root_index_file" {
-  type = string
   description = "Default root index file to resources"
-  default = "index.html"
+  type        = string
+  default     = "index.html"
+}
+
+variable "subdomains" {
+  description = "List contains subdomains"
+  type        = list(string)
+  default     = []
 }

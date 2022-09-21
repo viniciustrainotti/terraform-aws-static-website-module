@@ -1,7 +1,7 @@
 locals {
   has_domain         = var.domain != ""
-  cloudfront_aliases = var.aliases_cf_www ? [var.domain, "www.${var.domain}"] : [var.domain]
-  create_record_subdomain = local.has_domain && var.aliases_cf_www
+  subdomains         = [for s in var.subdomains : "${s}.${var.domain}"]
+  cloudfront_aliases = concat([var.domain], local.subdomains)
 }
 
 provider "aws" {

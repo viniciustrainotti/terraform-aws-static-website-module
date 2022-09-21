@@ -22,10 +22,10 @@ resource "aws_route53_record" "website" {
   ]
 }
 
-resource "aws_route53_record" "www" {
-  count = local.create_record_subdomain ? 1 : 0
+resource "aws_route53_record" "subdomain" {
+  for_each = toset(local.subdomains)
 
-  name    = "www.${var.domain}"
+  name    = each.key
   type    = "CNAME"
   zone_id = data.aws_route53_zone.this[0].zone_id
   ttl     = 300
