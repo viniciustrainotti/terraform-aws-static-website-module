@@ -1,15 +1,15 @@
 resource "aws_acm_certificate" "this" {
-  count = var.domain != "" ? 1 : 0
+  count = local.has_domain ? 1 : 0
 
   provider = aws.us-east-1
 
   domain_name               = var.domain
   validation_method         = "DNS"
-  subject_alternative_names = ["*.${var.domain}"]
+  subject_alternative_names = local.subdomains
 }
 
 resource "aws_acm_certificate_validation" "this" {
-  count = var.domain != "" ? 1 : 0
+  count = local.has_domain ? 1 : 0
 
   provider = aws.us-east-1
 

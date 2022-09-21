@@ -17,8 +17,8 @@ data "aws_iam_policy_document" "s3_allow_access_from_cf" {
 }
 
 resource "aws_s3_bucket" "logs" {
-  bucket        = "${var.app_name_default}-logs"
-  force_destroy = !(var.domain != "")
+  bucket        = "${var.application_name}-logs"
+  force_destroy = !local.has_domain
 
   tags = var.tags
 
@@ -30,8 +30,8 @@ resource "aws_s3_bucket_acl" "acl_logs" {
 }
 
 resource "aws_s3_bucket" "website" {
-  bucket        = var.app_name_default
-  force_destroy = !(var.domain != "")
+  bucket        = var.application_name
+  force_destroy = !local.has_domain
 
   tags = var.tags
 }
@@ -61,11 +61,11 @@ resource "aws_s3_bucket_website_configuration" "bucket_website_configuration" {
   bucket = aws_s3_bucket.website.bucket
 
   index_document {
-    suffix = "index.html"
+    suffix = var.default_root_index_file
   }
 
   error_document {
-    key = "index.html"
+    key = var.default_root_index_file
   }
 }
 

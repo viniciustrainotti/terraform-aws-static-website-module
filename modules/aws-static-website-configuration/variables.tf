@@ -63,7 +63,19 @@ variable "tags" {
   type        = map(string)
 }
 
-variable "app_name_default" {
+variable "application_name" {
   description = "Define application name to set default resources"
   type        = string
+}
+
+variable "default_root_index_file" {
+  description = "Default root index file to resources"
+  type        = string
+  default     = "index.html"
+}
+
+variable "subdomains" {
+  description = "List contains subdomains"
+  type        = list(string)
+  default     = []
 }
