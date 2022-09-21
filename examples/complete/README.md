@@ -1,10 +1,10 @@
-# Complete example
+# Complete Example
 
-This repository contains Terraform configuration that can be used to provision
-cloud infrastructure resources on AWS to host a React application.
+This example contains Terraform configuration that can be used to provision
+cloud infrastructure resources on AWS to host a static website hosting application.
 
 The AWS services used are CloudFront and S3. If a domain name is provided,
-aliases are created using Route53, and a cerificate is requested from Amazon
+aliases are created using Route53, and a certificate is requested from Amazon
 Certificate Manager.
 
 ## Requirements
