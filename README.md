@@ -94,4 +94,4 @@ Module is maintained by [Vinícius Trainotti](https://github.com/viniciustrainot
 
 ## License
 
-Apache 2 Licensed. See [LICENSE](https://github.com/viniciustrainotti/terraform-aws-static-website-module/blob/master/modules/aws-static-website-configuration/LICENSE) for full details.
+Apache 2 Licensed. See [LICENSE](https://github.com/viniciustrainotti/terraform-aws-static-website-module/blob/master/LICENSE) for full details.
