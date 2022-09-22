@@ -74,9 +74,11 @@ variable "subdomains" {
 variable "application_name" {
   description = "Define application name to set default resources"
   type        = string
+  default     = "default"
 }
 
 variable "website_path" {
   description = "Website path to project to uploads files"
   type        = string
+  default     = ""
 }
