@@ -13,6 +13,7 @@ name: CI
       - edited
       - synchronize
       - reopened
+  workflow_call:
 
 jobs:
   validate:
