@@ -7,7 +7,7 @@ and AWS domain configuration with AWS ACM & AWS Route53 optionally.
 
 ```terraform
 module "website" {
-  source = "github.com/viniciustrainotti/terraform-aws-static-website-module"
+  source = "viniciustrainotti/static-website-module/aws"
 
   aws_profile             = "default"
   domain                  = "example.com"
