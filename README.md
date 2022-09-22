@@ -1,5 +1,8 @@
 # AWS Static Website Terraform module
 
+[![Terraform Registry - latest](https://img.shields.io/badge/Terraform_Registry-latest-2ea44f?style=for-the-badge&logo=terraform)](https://registry.terraform.io/modules/viniciustrainotti/static-website-module/aws/latest?tab=readme)
+[![License - Apache](https://img.shields.io/badge/License-Apache-2ea44f?style=for-the-badge)](https://github.com/viniciustrainotti/terraform-aws-static-website-module/blob/master/LICENSE)
+
 This module provisions AWS S3 buckets with AWS CloudFront configured for static website hosting 
 and AWS domain configuration with AWS ACM & AWS Route53 optionally.
 
