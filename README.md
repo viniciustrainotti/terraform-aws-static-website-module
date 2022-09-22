@@ -72,11 +72,13 @@ No modules.
 |:----------------------- |:------------------------------------------------- |:--------------- |:------------- |:-------- |
 | aws_profile             | Profile set of your AWS account                   | `string`        | `"default"`   | no       | 
 | domain                  | Set root domain                                   | `string`        | `""`          | no       |
+| subdomains ¹             | List contains subdomains                          | `list(string)`  | `[]`          | no       |
 | website_path            | Website path to project files to uploads it       | `string`        | `""`          | yes      |
 | tags                    | Define tags to set in resources                   | `map(string)`   | `{}`          | no       |
 | application_name        | Define application name to set default resources  | `string`        | `"default"`   | yes      |
 | default_root_index_file | Default root index file to resources              | `string`        | `"index.html"`| no       |
-| subdomains              | List contains subdomains                          | `list(string)`  | `[]`          | no       |
+
+¹ If domain is not set, remove it.
 
 ## Outputs
 
