@@ -72,9 +72,9 @@ No modules.
 |:----------------------- |:------------------------------------------------- |:--------------- |:------------- |:-------- |
 | aws_profile             | Profile set of your AWS account                   | `string`        | `"default"`   | no       | 
 | domain                  | Set root domain                                   | `string`        | `""`          | no       |
-| website_path            | Website path to project to uploads files          | `string`        |               | yes      |
+| website_path            | Website path to project files to uploads it       | `string`        | `""`          | yes      |
 | tags                    | Define tags to set in resources                   | `map(string)`   | `{}`          | no       |
-| application_name        | Define application name to set default resources  | `string`        |               | yes      | 
+| application_name        | Define application name to set default resources  | `string`        | `"default"`   | yes      |
 | default_root_index_file | Default root index file to resources              | `string`        | `"index.html"`| no       |
 | subdomains              | List contains subdomains                          | `list(string)`  | `[]`          | no       |
 
@@ -83,9 +83,9 @@ No modules.
 | Name            | Description       |
 |:--------------- |:-----------------:|
 | website-url     | Website URL       |
-| bucket_logs     | Bucket logs id    |
-| bucket_website  | Bucket website id |
-| distribution-id | Cloudfront Id     |
+| bucket_logs     | Bucket Logs ID    |
+| bucket_website  | Bucket Website ID |
+| distribution-id | Cloudfront ID     |
 | cdn-url         | Cloudfront URL    |
 
 ## Authors

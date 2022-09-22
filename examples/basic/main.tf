@@ -23,6 +23,6 @@ provider "aws" {
 module "website" {
   source = "../../"
 
-  application_name        = "example"
-  website_path            = "/example/path/react/build"
+  application_name = "example"
+  website_path     = "/example/path/react/build"
 }
