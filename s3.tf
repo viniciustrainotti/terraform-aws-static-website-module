@@ -21,7 +21,6 @@ resource "aws_s3_bucket" "logs" {
   force_destroy = !local.has_domain
 
   tags = var.tags
-
 }
 
 resource "aws_s3_bucket_acl" "acl_logs" {

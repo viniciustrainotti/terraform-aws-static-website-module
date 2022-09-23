@@ -1,11 +1,11 @@
 data "aws_route53_zone" "this" {
-  count = var.domain != "" ? 1 : 0
+  count = local.has_domain ? 1 : 0
 
   name = "${var.domain}."
 }
 
 resource "aws_route53_record" "website" {
-  count = var.domain != "" ? 1 : 0
+  count = local.has_domain ? 1 : 0
 
   name    = var.domain
   type    = "A"
@@ -36,7 +36,7 @@ resource "aws_route53_record" "subdomain" {
 resource "aws_route53_record" "cert_validation" {
   provider = aws.us-east-1
 
-  for_each = var.domain != "" ? {
+  for_each = local.has_domain ? {
     for dvo in aws_acm_certificate.this[0].domain_validation_options : dvo.domain_name => {
       name   = dvo.resource_record_name
       record = dvo.resource_record_value

@@ -64,4 +64,9 @@ resource "aws_cloudfront_distribution" "this" {
   }
 
   tags = var.tags
+
+  depends_on = [
+    aws_s3_bucket.website,
+    aws_s3_bucket.logs
+  ]
 }
