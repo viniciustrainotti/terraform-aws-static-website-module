@@ -1,5 +1,5 @@
 output "website-url" {
-  value = var.domain != "" ? "https://${var.domain}" : "https://${aws_cloudfront_distribution.this.domain_name}"
+  value = local.has_domain ? "https://${var.domain}" : "https://${aws_cloudfront_distribution.this.domain_name}"
 }
 
 output "bucket_logs" {
