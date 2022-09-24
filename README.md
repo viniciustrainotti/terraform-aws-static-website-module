@@ -4,7 +4,7 @@
 [![License - Apache](https://img.shields.io/badge/License-Apache-2ea44f?style=for-the-badge)](https://github.com/viniciustrainotti/terraform-aws-static-website-module/blob/master/LICENSE)
 
 This module provisions AWS S3 buckets with AWS CloudFront configured for static website hosting 
-and AWS domain configuration with AWS ACM & AWS Route53 optionally.
+and possibility improve security with AWS WAF and AWS domain configuration with AWS ACM & AWS Route53 optionally.
 
 ## Usage
 
@@ -73,13 +73,14 @@ No modules.
 
 | Name                    | Description                                       | Type            | Default       | Required |
 |:----------------------- |:------------------------------------------------- |:--------------- |:------------- |:-------- |
+| application_name        | Define application name to set default resources  | `string`        | `"default"`   | yes      |
+| website_path            | Website path to project files to uploads it       | `string`        | `""`          | yes      |
 | aws_profile             | Profile set of your AWS account                   | `string`        | `"default"`   | no       | 
 | domain                  | Set root domain                                   | `string`        | `""`          | no       |
-| subdomains ¹             | List contains subdomains                          | `list(string)`  | `[]`          | no       |
-| website_path            | Website path to project files to uploads it       | `string`        | `""`          | yes      |
+| subdomains ¹            | List contains subdomains                          | `list(string)`  | `[]`          | no       |
 | tags                    | Define tags to set in resources                   | `map(string)`   | `{}`          | no       |
-| application_name        | Define application name to set default resources  | `string`        | `"default"`   | yes      |
 | default_root_index_file | Default root index file to resources              | `string`        | `"index.html"`| no       |
+| enable_waf              | Enable or disable to create AWS WAF resource      | `bool`          | `false`       | no       |
 
 ¹ If domain is not set, remove it.
 

@@ -63,10 +63,13 @@ resource "aws_cloudfront_distribution" "this" {
     }
   }
 
+  web_acl_id = var.enable_waf ? aws_wafv2_web_acl.waf[0].arn : null
+
   tags = var.tags
 
   depends_on = [
     aws_s3_bucket.website,
-    aws_s3_bucket.logs
+    aws_s3_bucket.logs,
+    aws_wafv2_web_acl.waf
   ]
 }
