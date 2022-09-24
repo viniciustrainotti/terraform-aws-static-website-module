@@ -63,7 +63,7 @@ resource "aws_cloudfront_distribution" "this" {
     }
   }
 
-  web_acl_id = aws_wafv2_web_acl.waf.arn
+  web_acl_id = var.enable_waf ? aws_wafv2_web_acl.waf[0].arn : null
 
   tags = var.tags
 

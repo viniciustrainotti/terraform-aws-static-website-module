@@ -7,6 +7,7 @@ domain                  = "viniciustrainotti.com"
 subdomains              = ["www", "me"]
 website_path            = "/opt/projects/react/learn-githubactions-react/build"
 default_root_index_file = "index.html"
+enable_waf              = true
 
 # Environemnt
 environment = "dev"

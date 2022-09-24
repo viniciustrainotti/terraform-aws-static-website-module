@@ -1,4 +1,6 @@
 resource "aws_wafv2_web_acl" "waf" {
+  count = var.enable_waf ? 1 : 0
+
   name  = "${var.application_name}-waf"
   scope = "CLOUDFRONT"
 

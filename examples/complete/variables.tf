@@ -44,3 +44,9 @@ variable "subdomains" {
   type        = list(string)
   default     = []
 }
+
+variable "enable_waf" {
+  description = "Enable or disable to create AWS WAF resource"
+  type        = bool
+  default     = false
+}
